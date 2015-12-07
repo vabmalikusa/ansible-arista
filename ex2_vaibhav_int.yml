@@ -1,0 +1,25 @@
+---
+
+# trying this for my first time for changing the interface of Ethernet 6 
+
+
+- name: Arista_ansible exercise2
+  hosts: arista 
+
+  tasks:
+    - name: Set the Ethernet6 description
+      eos_interface: name=Ethernet6 description="***this is in use***"
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }}
+            port={{ eapi_port }}
+            transport=https
+
+    - name: Set the interface to access mode VLAN 222
+      eos_switchport: name=Ethernet6 mode=access access_vlan=222
+            username={{ eapi_username }}
+            password={{ eapi_password }}
+            host={{ eapi_hostname }}
+            port={{ eapi_port }}
+            transport=https
+
